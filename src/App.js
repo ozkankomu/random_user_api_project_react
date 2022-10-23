@@ -24,7 +24,7 @@ function App() {
     const { data } = await axios(url);
     setPerson(data.results[0]);
     setScreen(
-      `My name is ${data.results[0].name.first}   ${data.results[0].name.last}`
+      `My name is ${data?.results[0].name.first}   ${data?.results[0].name.last}`
     );
   };
 

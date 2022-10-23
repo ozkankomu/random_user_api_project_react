@@ -1,7 +1,6 @@
 import React from "react";
 
 const Table = ({ table }) => {
-  console.log(table);
   return (
     <table className="table">
       {table.length > 0 && (
@@ -16,7 +15,6 @@ const Table = ({ table }) => {
       )}
       <tbody>
         {table?.map((item) => {
-          console.log(item);
           return (
             <tr key={item.id}>
               <th className="td">{item.firstName}</th>
