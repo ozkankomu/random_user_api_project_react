@@ -17,6 +17,8 @@ function App() {
   const [person, setPerson] = useState([]);
   const [table, setTable] = useState([]);
 
+  const [flag, setFlag] = useState("");
+
   const [screen, setScreen] = useState();
 
   const response = async () => {
@@ -37,18 +39,21 @@ function App() {
   const handleTable = () => {
     const filterEmail = table.some((item) => item.email === person.email);
 
-    !filterEmail &&
-      setTable([
-        {
-          firstName: person.name.first,
-          lastName: person.name.last,
-          email: person.email,
-          phone: person.phone,
-          age: person.dob.age,
-          id: Math.ceil(Math.random) * 1000000,
-        },
-        ...table,
-      ]);
+    filterEmail || setFlag(false);
+
+    !filterEmail
+      ? setTable([
+          {
+            firstName: person.name.first,
+            lastName: person.name.last,
+            email: person.email,
+            phone: person.phone,
+            age: person.dob.age,
+            id: Math.ceil(Math.random) * 1000000,
+          },
+          ...table,
+        ])
+      : setFlag(true);
   };
 
   return (
@@ -136,7 +141,7 @@ function App() {
             </button>
           </div>
 
-          <Table table={table} />
+          <Table table={table} flag={flag} setFlag={setFlag} />
         </div>
       </div>
       <div style={{ display: "flex", justifyContent: "center" }}>
