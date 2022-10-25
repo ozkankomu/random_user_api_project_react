@@ -1,18 +1,22 @@
 import React from "react";
 
 const Table = ({ table, flag, setFlag }) => {
+  flag &&
+    setTimeout(() => {
+      setFlag(false);
+    }, 3000);
+
   return (
     <>
-      {flag ? (
+      {flag && (
         <p
           className="mesage"
           style={{ marginTop: "10px", color: "darkred", fontSize: "1.1rem" }}
         >
           (You can add the same user only once.)
         </p>
-      ) : (
-        <p></p>
       )}
+
       <table className="table">
         {table.length > 0 && (
           <thead>
